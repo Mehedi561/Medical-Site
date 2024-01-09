@@ -3,6 +3,7 @@
 import { useContext } from "react";
 import { userContext } from "../components/UserProvider/UserProvider";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const page = () => {
   let { login } = useContext(userContext);
@@ -17,7 +18,7 @@ const page = () => {
     login(email, password).then(res => {
       let user = res.user;
       console.log(user);
-      router.push("/", { scroll: false });
+      router.push("/user", { scroll: false });
     });
   };
   return (
@@ -57,6 +58,12 @@ const page = () => {
                   </a>
                 </label>
               </div>
+              <h1>
+                New here{" "}
+                <Link className="text-blue-700" href={"/signup"}>
+                  Sign Up
+                </Link>
+              </h1>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
